@@ -1,4 +1,4 @@
-﻿using System;
+﻿using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace MarsRovers.Steps
