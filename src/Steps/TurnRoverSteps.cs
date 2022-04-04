@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System;
 using TechTalk.SpecFlow;
 
 namespace MarsRovers.Steps
@@ -34,6 +35,7 @@ namespace MarsRovers.Steps
         {
             rover.Direction.Should().Be(direction);
             rover.Position.Should().Be(new Point(x, y));
+  
         }
     }
 }
