@@ -4,58 +4,89 @@ namespace MarsRovers
 {
   class Rover
   {
-    public string Direction { get; internal set; }
-    public Point Position { get; internal set; }
+        public string Direction { get; internal set; }
+        public Point Position { get; internal set; }
 
-    internal void Turn(string turnDirection)
-    {
-      if (turnDirection == "L")
-      {
-
-        if (Direction == "N")
+        internal void Turn(string turnDirection)
         {
-          Direction = "W";
+            if (turnDirection=="L")
+            {
+                TurnLeft();
+            }
+            else
+            {
+                TurnRight();
+            }
+
         }
 
-        else if (Direction == "E")
+        void TurnRight()
         {
-          Direction = "N";
+            if (Direction == "N")
+            {
+                Direction = "E";
+                return;
+            }
+            if (Direction == "S")
+            {
+                Direction = "W";
+                return;
+            }
+            if (Direction == "W")
+            {
+                Direction = "N";
+                return;
+            }
+            if (Direction == "E")
+            {
+                Direction = "S";
+                return;
+            }
         }
 
-        else if (Direction == "W")
+        void TurnLeft()
         {
-          Direction = "S";
+            if (Direction=="N")
+            {
+                Direction = "W";
+                return ;
+            }
+            if (Direction=="S")
+            {
+                Direction = "E";
+                return;
+            }
+            if (Direction=="W")
+            {
+                Direction = "S";
+                return;
+            }
+            if (Direction=="E")
+            {
+                Direction = "N";
+                return;
+            }
         }
 
-        else if (Direction == "S")
+        internal void Move(int moveConrdinates)
         {
-          Direction = "E";
+            if (Direction=="N")
+            {
+                Position = new Point(Position.X, Position.Y + moveConrdinates);
+            }
+            if (Direction == "S")
+            {
+                Position = new Point(Position.X, Position.Y - moveConrdinates);
+            }
+            if (Direction == "W")
+            {
+                Position = new Point(Position.X- moveConrdinates, Position.Y );
+            }
+            if (Direction == "E")
+            {
+                Position = new Point(Position.X + moveConrdinates, Position.Y);
+            }
         }
-      }
-
-      if (turnDirection == "R")
-      {
-
-        if (Direction == "N")
-        {
-          Direction = "E";
-        }
-
-        else if (Direction == "E")
-        {
-          Direction = "S";
-        }
-
-        else if (Direction == "W")
-        {
-          Direction = "N";
-        }
-
-        else if (Direction == "S")
-        {
-          Direction = "W";
-        }
-      }
-    }
+      
   }
 }
